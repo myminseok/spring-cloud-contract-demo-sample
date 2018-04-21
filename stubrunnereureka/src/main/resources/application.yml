@@ -1,0 +1,11 @@
+stubrunner:
+  cloud.stubbed.discovery.enabled: false
+server.port: ${ PORT:8084}
+spring:
+  cloud.stream.defaultBinder: rabbit
+  application:
+    name: stubrunner
+#eureka:
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
