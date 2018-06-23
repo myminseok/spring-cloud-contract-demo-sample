@@ -36,7 +36,7 @@ public class BeerClientApplicationTests {
 
 
 		WireMock.stubFor(
-			WireMock.post("/check2").withHeader("Content-Type", equalTo("application/json"))
+			WireMock.post("/check").withHeader("Content-Type", equalTo("application/json"))
 					.withRequestBody(equalToJson(requestJson))
 				.willReturn(WireMock.aResponse().withStatus(200).withBody(responseJson))
 		);
@@ -46,7 +46,7 @@ public class BeerClientApplicationTests {
 		HttpEntity<String> httpEntity = new HttpEntity<>(requestJson, httpHeaders);
 
 		RestTemplate restTemplate =  new RestTemplate();
-		ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:8080/check2", httpEntity, String.class);
+		ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:8080/check", httpEntity, String.class);
 
 		Assert.assertEquals(200, responseEntity.getStatusCodeValue());
 		Assert.assertEquals(responseJson, responseEntity.getBody());
@@ -64,7 +64,7 @@ public class BeerClientApplicationTests {
 		HttpEntity<String> httpEntity = new HttpEntity<>(requestJson, httpHeaders);
 
 		RestTemplate restTemplate =  new RestTemplate();
-		ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:8085/check2", httpEntity, String.class);
+		ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:8085/check", httpEntity, String.class);
 
 		Assert.assertEquals(200, responseEntity.getStatusCodeValue());
 		Assert.assertEquals(responseJson, responseEntity.getBody());
